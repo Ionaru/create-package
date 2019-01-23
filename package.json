@@ -1,0 +1,27 @@
+{
+  "name": "@ionaru/create-package",
+  "version": "0.0.3",
+  "description": "A system that templates a new NPM package.",
+  "bin": "dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist/**/*"],
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint --project tsconfig.json -c tslint.json \"src/**/*.ts\" --format stylish"
+  },
+  "keywords": [
+    "template",
+    "npm",
+    "package"
+  ],
+  "author": "Jeroen Akkerman",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
+  },
+  "dependencies": {}
+}
