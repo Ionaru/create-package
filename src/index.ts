@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import * as Mustache from 'mustache';
 import * as path from 'path';
 
-(async function main() {
+(function main() {
 
     const packageName = process.argv[2];
 
@@ -72,7 +72,4 @@ import * as path from 'path';
 
     fs.writeFileSync(path.join(packageName, 'src', 'index.ts'), '');
 
-})().then().catch((error) => {
-    console.error(error);
-    process.exit(1);
-});
+})();
