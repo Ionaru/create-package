@@ -1,6 +1,6 @@
-# @ionaru/create-package (UNFINISHED)
+# @ionaru/create-package
 
 ## Usage
 ```
-npx @ionaru/create-package
+npx @ionaru/create-package <package-name>
 ```
