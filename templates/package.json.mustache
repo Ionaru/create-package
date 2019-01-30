@@ -1,0 +1,25 @@
+{
+    "name": "{{packageName}}",
+    "version": "1.0.0",
+    "description": "My package {{packageName}}",
+    "bin": "dist/index.js",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/**/*"
+    ],
+    "scripts": {
+        "build": "tsc --project tsconfig.json",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "tslint --project tsconfig.json -c tslint.json \"src/**/*.ts\" --format stylish"
+    },
+    "keywords": [],
+    "author": "Jeroen Akkerman",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "latest",
+        "tslint": "latest",
+        "typescript": "latest"
+    },
+    "dependencies": {}
+}

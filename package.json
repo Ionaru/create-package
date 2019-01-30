@@ -5,7 +5,9 @@
   "bin": "dist/index.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,9 +21,12 @@
   "author": "Jeroen Akkerman",
   "license": "MIT",
   "devDependencies": {
+    "@types/mustache": "^0.8.32",
     "@types/node": "^10.12.18",
     "tslint": "^5.12.1",
     "typescript": "^3.2.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "mustache": "^3.0.1"
+  }
 }
