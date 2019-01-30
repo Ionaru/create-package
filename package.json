@@ -1,12 +1,13 @@
 {
     "name": "@ionaru/create-package",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A system that templates a new NPM package.",
     "bin": "dist/index.js",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
-        "dist/**/*"
+        "dist/**/*",
+        "templates/**/*"
     ],
     "scripts": {
         "build": "tsc --project tsconfig.json",
