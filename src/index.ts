@@ -72,6 +72,11 @@ import * as path from 'path';
     const readmeRendered = Mustache.render(readmeTemplate, {packageName});
     fs.writeFileSync(path.join(packageName, 'README.md'), readmeRendered);
 
+    // Create CHANGELOG
+    const changelogTemplate = fs.readFileSync(path.join(templateDirectory, 'CHANGELOG.md.mustache')).toString();
+    const changelogRendered = Mustache.render(changelogTemplate, {packageName});
+    fs.writeFileSync(path.join(packageName, 'CHANGELOG.md'), changelogRendered);
+
     fs.mkdirSync(path.join(packageName, 'src'));
     fs.mkdirSync(path.join(packageName, 'dist'));
 
