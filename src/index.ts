@@ -32,6 +32,16 @@ import * as path from 'path';
     // No rendering needed
     fs.writeFileSync(path.join(packageName, '.editorconfig'), editorConfigTemplate);
 
+    // Create code-style-settings file
+    const codeStyleSettingsTemplate = fs.readFileSync(path.join(templateDirectory, 'code-style-settings.xml.mustache')).toString();
+    const codeStyleSettingsRendered = Mustache.render(codeStyleSettingsTemplate, {packageName});
+    fs.writeFileSync(path.join(packageName, 'code-style-settings.xml'), codeStyleSettingsRendered);
+
+    // Create .npmrc
+    const npmrcTemplate = fs.readFileSync(path.join(templateDirectory, '.npmrc.mustache')).toString();
+    // No rendering needed
+    fs.writeFileSync(path.join(packageName, '.npmrc'), npmrcTemplate);
+
     // Create tsconfig
     const tsConfigTemplate = fs.readFileSync(path.join(templateDirectory, 'tsconfig.json.mustache')).toString();
     // No rendering needed
@@ -46,11 +56,6 @@ import * as path from 'path';
     const gitIgnoreTemplate = fs.readFileSync(path.join(templateDirectory, '.gitignore.mustache')).toString();
     // No rendering needed
     fs.writeFileSync(path.join(packageName, '.gitignore'), gitIgnoreTemplate);
-
-    // Create code-style-settings file
-    const codeStyleSettingsTemplate = fs.readFileSync(path.join(templateDirectory, 'code-style-settings.xml.mustache')).toString();
-    const codeStyleSettingsRendered = Mustache.render(codeStyleSettingsTemplate, {packageName});
-    fs.writeFileSync(path.join(packageName, 'code-style-settings.xml'), codeStyleSettingsRendered);
 
     // Create package.json
     const packageJsonTemplate = fs.readFileSync(path.join(templateDirectory, 'package.json.mustache')).toString();
