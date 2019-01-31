@@ -62,7 +62,12 @@ import * as path from 'path';
     const packageJsonRendered = Mustache.render(packageJsonTemplate, {packageName});
     fs.writeFileSync(path.join(packageName, 'package.json'), packageJsonRendered);
 
-    // Create license
+    // Create travis.yml
+    const travisTemplate = fs.readFileSync(path.join(templateDirectory, '.travis.yml.mustache')).toString();
+    // No rendering needed
+    fs.writeFileSync(path.join(packageName, '.travis.yml'), travisTemplate);
+
+    // Create LICENSE
     const licenseTemplate = fs.readFileSync(path.join(templateDirectory, 'LICENSE.mustache')).toString();
     // No rendering needed
     fs.writeFileSync(path.join(packageName, 'LICENSE'), licenseTemplate);
