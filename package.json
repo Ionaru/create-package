@@ -22,6 +22,7 @@
         "package"
     ],
     "author": "Jeroen Akkerman",
+    "repository": "github:Ionaru/create-package",
     "license": "MIT",
     "devDependencies": {
         "@types/mustache": "^0.8.32",
