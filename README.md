@@ -15,6 +15,6 @@ npm i
 git add .
 git commit -m "Work was done"
 npm version <type> -m "Bump version to %s"
-git push
+git push --follow-tags
 npm publish --access=public
 ```
