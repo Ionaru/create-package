@@ -25,7 +25,7 @@ npm i
 
 ### Work
 ```bash
-// Add code & edit changelog
+// Add code & update changelog
 git add .
 git commit -m "Work was done"
 git push
@@ -33,6 +33,9 @@ git push
 
 ### Release
 ```bash
+// Update changelog
+git add CHANGELOG.md
+git commit -m "Updated changelog for <version>"
 npm version <release-type>
 git push --follow-tags
 ```
