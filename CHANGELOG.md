@@ -6,9 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
- - Repository field to package.json
+- More information in README
+- Repository field to package.json
 
-### Updates
+### Updated
 - Typescript to 3.3.1
 
 ## [1.1.1] - 2019-02-01
