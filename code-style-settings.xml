@@ -1,4 +1,4 @@
-<code_scheme name="moo">
+<code_scheme name="create-package">
     <TypeScriptCodeStyleSettings>
         <option name="USE_DOUBLE_QUOTES" value="false"/>
         <option name="SPACES_WITHIN_IMPORTS" value="true"/>
