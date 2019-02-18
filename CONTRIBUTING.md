@@ -46,7 +46,7 @@ Yay! You are ready! 🍾
 
 ### ⤴️ Pull requests
 
-Please make sure any code you submit is compliant and compatible with this repository's license.
+Please make sure any code you submit is compliant and compatible with this repository's [license](./LICENSE).
 
 #### Your first pull request
 1. [Create a fork of this project](https://github.com/Ionaru/create-package/fork).
