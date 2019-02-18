@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- CONTRIBUTING.md file locally and in template
 - Trailing newline to .npmrc
 - Spaces between keys and values in .editorconfig
 - "Description" and "Usage" to README template

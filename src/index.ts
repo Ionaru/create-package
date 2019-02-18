@@ -72,15 +72,20 @@ import * as path from 'path';
     // No rendering needed
     fs.writeFileSync(path.join(packageName, 'LICENSE'), licenseTemplate);
 
-    // Create README
+    // Create README.md
     const readmeTemplate = fs.readFileSync(path.join(templateDirectory, 'README.md.mustache')).toString();
     const readmeRendered = Mustache.render(readmeTemplate, {packageName});
     fs.writeFileSync(path.join(packageName, 'README.md'), readmeRendered);
 
-    // Create CHANGELOG
+    // Create CHANGELOG.md
     const changelogTemplate = fs.readFileSync(path.join(templateDirectory, 'CHANGELOG.md.mustache')).toString();
     const changelogRendered = Mustache.render(changelogTemplate, {packageName});
     fs.writeFileSync(path.join(packageName, 'CHANGELOG.md'), changelogRendered);
+
+    // Create CONTRIBUTING.md
+    const contributingTemplate = fs.readFileSync(path.join(templateDirectory, 'CONTRIBUTING.md.mustache')).toString();
+    const contributingRendered = Mustache.render(contributingTemplate, {packageName});
+    fs.writeFileSync(path.join(packageName, 'CONTRIBUTING.md'), contributingRendered);
 
     fs.mkdirSync(path.join(packageName, 'src'));
     fs.mkdirSync(path.join(packageName, 'dist'));
