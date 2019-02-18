@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Indenting in tsconfig.json template
 - Badge link to package in README
 
+### Changed
+- Build for es6
+
 ## [1.2.0] - 2019-02-01
 ### Added
 - More information in README
