@@ -39,8 +39,6 @@ import * as path from 'path';
 
     const variables: ITemplateVariables = {packageName, packageScope};
 
-    console.log(variables);
-
     const templateDirectory = path.join(__dirname, '..', 'templates');
 
     // The main render function.
