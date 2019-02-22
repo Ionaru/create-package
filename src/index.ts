@@ -10,7 +10,15 @@ import * as path from 'path';
         [index: string]: string;
     }
 
-    const packageName = process.argv[2];
+    let packageScope = '';
+    let packageName = process.argv[2];
+
+    const scopeMatchRegex = new RegExp(/@(.+?)\//);
+    const privatePackageMatch = packageName.match(scopeMatchRegex);
+    if (privatePackageMatch) {
+        packageScope = privatePackageMatch[0];
+        packageName = packageName.replace(scopeMatchRegex, '');
+    }
 
     if (!packageName) {
         console.error('A package name is required!');
@@ -29,7 +37,9 @@ import * as path from 'path';
 
     fs.mkdirSync(packageName);
 
-    const variables: ITemplateVariables = {packageName};
+    const variables: ITemplateVariables = {packageName, packageScope};
+
+    console.log(variables);
 
     const templateDirectory = path.join(__dirname, '..', 'templates');
 
