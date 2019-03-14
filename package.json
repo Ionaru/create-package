@@ -15,7 +15,7 @@
         "pretest": "npm run lint",
         "test": "echo \"Error: no test specified\" && exit 0",
         "prepare": "npm run build",
-        "preversion": "npm run lint && npm run test"
+        "preversion": "npm run test"
     },
     "keywords": [
         "template",
