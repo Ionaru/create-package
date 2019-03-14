@@ -20,7 +20,8 @@ npx @ionaru/create-package <package-name>
 npx @ionaru/create-package <package-name>
 git init
 git remote add origin https://github.com/Ionaru/<package-name>.git
-npm i
+npm install
+// Change "latest" versions in package.json to version numbers.
 ```
 
 ### Work
