@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Package version is now `0.0.0` initially.
+- Split up lint scripts for src and spec files.
 
 ## [2.2.0] - 2019-03-14
 ### Added
