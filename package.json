@@ -22,7 +22,9 @@
     "keywords": [
         "template",
         "npm",
-        "package"
+        "package",
+        "typescript",
+        "tslint"
     ],
     "author": "Jeroen Akkerman",
     "repository": "github:Ionaru/create-package",
