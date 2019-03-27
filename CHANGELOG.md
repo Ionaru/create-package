@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Extra workflow explanation to README.
 - SonarTS through tslint for their amazing code-quality rules locally and in template.
-- `pretest` script in package.json locally and in template.
+- `pretest` script that runs lint script in package.json locally and in template.
 
 ### Changed
 - Ordering of scripts in package.json locally and in template.
