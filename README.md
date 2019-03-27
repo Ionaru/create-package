@@ -18,10 +18,15 @@ npx @ionaru/create-package <package-name>
 ### Setup
 ```bash
 npx @ionaru/create-package <package-name>
+cd <package-name>
 git init
-git remote add origin https://github.com/Ionaru/<package-name>.git
-npm install
+git commit --allow-empty -m "Initial commit"
 // Change "latest" versions in package.json to version numbers.
+npm install
+git add .
+git commit -m "Project setup"
+git remote add origin https://github.com/Ionaru/<package-name>.git
+git push origin master
 ```
 
 ### Work
