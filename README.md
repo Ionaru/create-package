@@ -21,7 +21,6 @@ npx @ionaru/create-package <package-name>
 cd <package-name>
 git init
 git commit --allow-empty -m "Initial commit"
-// Change "latest" versions in package.json to version numbers.
 npm install
 git add .
 git commit -m "Project setup"

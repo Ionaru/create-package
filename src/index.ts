@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
+import axios from 'axios';
 import * as fs from 'fs';
 import * as Mustache from 'mustache';
 import * as path from 'path';
 
-(function main() {
+(async function main() {
 
     interface ITemplateVariables {
         [index: string]: string;
@@ -37,9 +38,29 @@ import * as path from 'path';
 
     fs.mkdirSync(packageName);
 
-    const variables: ITemplateVariables = {packageName, packageScope};
+    const latestTypesNodeVersion = await getLatestPackageVersion('@types/node');
+    const latestTsLintVersion = await getLatestPackageVersion('tslint');
+    const latestTsLintSonartsVersion = await getLatestPackageVersion('tslint-sonarts');
+    const latestTypescriptVersion = await getLatestPackageVersion('typescript');
+
+    // noinspection JSUnusedGlobalSymbols
+    const variables: ITemplateVariables = {
+        latestTsLintSonartsVersion,
+        latestTsLintVersion,
+        latestTypesNodeVersion,
+        latestTypescriptVersion,
+        packageName,
+        packageScope,
+    };
 
     const templateDirectory = path.join(__dirname, '..', 'templates');
+
+    async function getLatestPackageVersion(name: string): Promise<string> {
+        const versionToGet = name.startsWith('@') ? '*' : 'latest';
+        const response = await axios.get(`https://registry.npmjs.org/${ encodeURIComponent(name) }/${versionToGet}`);
+        const packageInfo = response.data;
+        return packageInfo.version;
+    }
 
     // The main render function.
     function renderTemplate(templateName: string): void {
