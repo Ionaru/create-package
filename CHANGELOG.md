@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Latest package version numbers in package.json will be automatically fetched.
+- Debug package and debug statements.
 
 ## [2.3.0] - 2019-03-27
 ### Added
