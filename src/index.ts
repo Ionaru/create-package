@@ -50,10 +50,8 @@ import * as path from 'path';
 
     debug(`Folder "${packageName}" created.`);
 
-    const latestTypesNodeVersion = await getLatestPackageVersion('@types/node');
-    const latestTsLintVersion = await getLatestPackageVersion('tslint');
-    const latestTsLintSonartsVersion = await getLatestPackageVersion('tslint-sonarts');
-    const latestTypescriptVersion = await getLatestPackageVersion('typescript');
+    const [latestTypesNodeVersion, latestTsLintVersion, latestTsLintSonartsVersion, latestTypescriptVersion] =
+        await Promise.all(['@types/node', 'tslint', 'tslint-sonarts', 'typescript'].map(getLatestPackageVersion));
 
     // noinspection JSUnusedGlobalSymbols
     const variables: ITemplateVariables = {
