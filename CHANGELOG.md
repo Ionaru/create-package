@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Set tsconfig option `removeComments` to `false`, locally and in template.
 
+### Removed
+- `bin` section from package.json template.
+
 ## [2.4.0] - 2019-04-04
 ### Added
 - Latest package version numbers in package.json will be automatically fetched.
