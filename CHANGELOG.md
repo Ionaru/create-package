@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed Node.js 6 support.
 
 ### Added
-- Node.js 12 support.
+- Node.js 12 support for this package and in the template.
 
 ### Changed
 - Do emit all comments in built scripts.
