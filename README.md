@@ -25,7 +25,7 @@ npm install
 git add .
 git commit -m "Project setup"
 git remote add origin https://github.com/Ionaru/<package-name>.git
-git push origin master
+git push -u origin master
 ```
 
 ### Work

@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Node.js 12 support for this package and in the template.
 
 ### Changed
-- Do emit all comments in built scripts.
+- Set tsconfig option `removeComments` to `false`, locally and in template.
 
 ### Removed
 - `bin` field from package.json template.
