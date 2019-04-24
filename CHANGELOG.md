@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Node.js 12 support.
 
+### Changed
+- Do emit all comments in built scripts.
+
 ### Removed
 - `bin` field from package.json template.
 
