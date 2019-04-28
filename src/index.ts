@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 import axios from 'axios';
+import * as childProcess from 'child_process';
 import Debug from 'debug';
 import * as fs from 'fs';
 import * as Mustache from 'mustache';
 import * as path from 'path';
+import * as git from 'simple-git';
 
 (async function main() {
 
@@ -50,8 +52,10 @@ import * as path from 'path';
 
     debug(`Folder "${packageName}" created.`);
 
+    const packagesToInstall = ['@types/node', 'tslint', 'tslint-sonarts', 'typescript'];
+
     const [latestTypesNodeVersion, latestTsLintVersion, latestTsLintSonartsVersion, latestTypescriptVersion] =
-        await Promise.all(['@types/node', 'tslint', 'tslint-sonarts', 'typescript'].map(getLatestPackageVersion));
+        await Promise.all(packagesToInstall.map(getLatestPackageVersion));
 
     // noinspection JSUnusedGlobalSymbols
     const variables: ITemplateVariables = {
@@ -70,7 +74,7 @@ import * as path from 'path';
 
         const versionToGet = name.startsWith('@') ? '*' : 'latest';
 
-        const url = `https://registry.npmjs.org/${ encodeURIComponent(name) }/${versionToGet}`;
+        const url = `https://registry.npmjs.org/${encodeURIComponent(name)}/${versionToGet}`;
         debug(`GET: ${url}`);
 
         const response = await axios.get(url);
@@ -112,5 +116,17 @@ import * as path from 'path';
 
     debug(`Creating "dist" folder.`);
     fs.mkdirSync(path.join(packageName, 'dist'));
+
+    debug(`Initializing git repository.`);
+    await new Promise((resolve) => git(packageName).init(() => resolve()));
+
+    debug(`Doing initial commit.`);
+    await new Promise((resolve) => git(packageName).commit('Initial commit', [], {'--allow-empty': true}, () => resolve()));
+
+    debug(`Installing packages.`);
+    childProcess.execSync(`npm install --silent`, {cwd: packageName});
+
+    debug(`Doing project setup commit.`);
+    await new Promise((resolve) => git(packageName).add('.').commit('Project setup', () => resolve()));
 
 })();

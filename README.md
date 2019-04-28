@@ -19,11 +19,6 @@ npx @ionaru/create-package <package-name>
 ```bash
 npx @ionaru/create-package <package-name>
 cd <package-name>
-git init
-git commit --allow-empty -m "Initial commit"
-npm install
-git add .
-git commit -m "Project setup"
 git remote add origin https://github.com/Ionaru/<package-name>.git
 git push -u origin master
 ```
