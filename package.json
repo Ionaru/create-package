@@ -32,7 +32,7 @@
     "devDependencies": {
         "@types/debug": "^4.1.4",
         "@types/mustache": "^0.8.32",
-        "@types/node": "^11.13.7",
+        "@types/node": "^11.13.8",
         "tslint": "^5.16.0",
         "tslint-sonarts": "^1.9.0",
         "typescript": "^3.4.5"
