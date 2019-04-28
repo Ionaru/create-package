@@ -4,7 +4,8 @@ All notable changes to the create-package project will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+<!--## [Unreleased]-->
+## [4.0.0] - 2019-04-28
 ### BREAKING CHANGES
 - Initial git commits and package install will now be done automatically.
 
@@ -115,7 +116,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Script that deploys the templates into a project folder.
 - Setup for this project.
 
-[Unreleased]: https://github.com/Ionaru/create-package/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/Ionaru/create-package/compare/4.0.0...HEAD
+[4.0.0]: https://github.com/Ionaru/create-package/compare/3.0.0...4.0.0
 [3.0.0]: https://github.com/Ionaru/create-package/compare/2.4.0...3.0.0
 [2.4.0]: https://github.com/Ionaru/create-package/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/Ionaru/create-package/compare/2.2.0...2.3.0
