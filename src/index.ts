@@ -6,9 +6,9 @@ import Debug from 'debug';
 import * as fs from 'fs';
 import * as Mustache from 'mustache';
 import * as path from 'path';
-import * as git from 'simple-git';
+import * as git from 'simple-git/promise';
 
-(async function main() {
+(async () => {
 
     const debug = Debug('create-package');
 
@@ -52,6 +52,13 @@ import * as git from 'simple-git';
 
     debug(`Folder "${packageName}" created.`);
 
+    debug(`Initializing git repository.`);
+    await git(packageName).init();
+
+    debug(`Doing initial commit.`);
+    const initialCommit = await git(packageName).commit('Initial commit', [], {'--allow-empty': true});
+    const shortInitialCommitHash = initialCommit.commit.split(' ')[1];
+
     const packagesToInstall = ['@types/node', 'tslint', 'tslint-sonarts', 'typescript'];
 
     const [latestTypesNodeVersion, latestTsLintVersion, latestTsLintSonartsVersion, latestTypescriptVersion] =
@@ -65,6 +72,7 @@ import * as git from 'simple-git';
         latestTypescriptVersion,
         packageName,
         packageScope,
+        shortInitialCommitHash,
     };
 
     const templateDirectory = path.join(__dirname, '..', 'templates');
@@ -117,16 +125,12 @@ import * as git from 'simple-git';
     debug(`Creating "dist" folder.`);
     fs.mkdirSync(path.join(packageName, 'dist'));
 
-    debug(`Initializing git repository.`);
-    await new Promise((resolve) => git(packageName).init(() => resolve()));
-
-    debug(`Doing initial commit.`);
-    await new Promise((resolve) => git(packageName).commit('Initial commit', [], {'--allow-empty': true}, () => resolve()));
-
     debug(`Installing packages.`);
     childProcess.execSync(`npm install --silent`, {cwd: packageName});
 
     debug(`Doing project setup commit.`);
-    await new Promise((resolve) => git(packageName).add('.').commit('Project setup', () => resolve()));
+
+    await git(packageName).add('.');
+    await git(packageName).commit('Project setup');
 
 })();

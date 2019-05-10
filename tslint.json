@@ -11,6 +11,10 @@
         ],
         "no-console": false,
         "no-null-keyword": true,
+        "no-submodule-imports": [
+            true,
+            "simple-git"
+        ],
         "no-unused-expression": [
             true,
             "allow-new"
