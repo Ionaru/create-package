@@ -6,7 +6,7 @@ import Debug from 'debug';
 import * as fs from 'fs';
 import * as Mustache from 'mustache';
 import * as path from 'path';
-import * as git from 'simple-git/promise';
+import * as simpleGit from 'simple-git/promise';
 
 (async () => {
 
@@ -53,10 +53,11 @@ import * as git from 'simple-git/promise';
     debug(`Folder "${packageName}" created.`);
 
     debug(`Initializing git repository.`);
-    await git(packageName).init();
+    const git = simpleGit(packageName);
+    await git.init();
 
     debug(`Doing initial commit.`);
-    const initialCommit = await git(packageName).commit('Initial commit', [], {'--allow-empty': true});
+    const initialCommit = await git.commit('Initial commit', [], {'--allow-empty': true});
     const shortInitialCommitHash = initialCommit.commit.split(' ')[1];
 
     const packagesToInstall = ['@types/node', 'tslint', 'tslint-sonarts', 'typescript'];
@@ -130,7 +131,7 @@ import * as git from 'simple-git/promise';
 
     debug(`Doing project setup commit.`);
 
-    await git(packageName).add('.');
-    await git(packageName).commit('Project setup');
+    await git.add('.');
+    await git.commit('Project setup');
 
 })();
