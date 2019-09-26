@@ -1,6 +1,6 @@
 {
     "name": "@ionaru/create-package",
-    "version": "4.1.1",
+    "version": "4.1.2",
     "description": "A system that templates a new NPM package.",
     "bin": "dist/index.js",
     "main": "dist/index.js",
