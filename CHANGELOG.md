@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - "clean" script to package.json template.
 
+### Changed
+- tsconfig.json template to only build the index.ts file, everything else should be discovered through imports.
+
 ## [4.1.2] - 2019-09-26
 ### Fixed
 - @types/node latest version lookup.
