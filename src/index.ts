@@ -65,6 +65,8 @@ import * as simpleGit from 'simple-git/promise';
     const [latestTypesNodeVersion, latestTsLintVersion, latestTsLintSonartsVersion, latestTypescriptVersion] =
         await Promise.all(packagesToInstall.map(getLatestPackageVersion));
 
+    const year = new Date().getFullYear().toString();
+
     // noinspection JSUnusedGlobalSymbols
     const variables: ITemplateVariables = {
         latestTsLintSonartsVersion,
@@ -74,6 +76,7 @@ import * as simpleGit from 'simple-git/promise';
         packageName,
         packageScope,
         shortInitialCommitHash,
+        year,
     };
 
     const templateDirectory = path.join(__dirname, '..', 'templates');

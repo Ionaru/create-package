@@ -4,7 +4,15 @@ All notable changes to the create-package project will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!--## [Unreleased]-->
+## [Unreleased]
+### Changed
+- 2019 in LICENSE template to dynamic current year.
+- Node.js to 12 in CONTRIBUTING template.
+
+### Removed
+- Node.js 8 from .travis.yml template.
+- Node.js 11 from .travis.yml template.
+
 ## [4.1.1] - 2019-06-12
 ### Fixed
 - Security vulnerabilities.
