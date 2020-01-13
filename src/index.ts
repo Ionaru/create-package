@@ -84,16 +84,29 @@ import * as simpleGit from 'simple-git/promise';
     async function getLatestPackageVersion(name: string): Promise<string> {
         debug(`Getting latest version number for package: ${name}`);
 
-        const versionToGet = name.startsWith('@') ? '*' : 'latest';
+        if (name === '@types/node') {
+            // special case
 
-        const url = `https://registry.npmjs.org/${encodeURIComponent(name)}/${versionToGet}`;
-        debug(`GET: ${url}`);
+            const url = `https://registry.npmjs.org/${encodeURIComponent(name)}`;
+            debug(`GET: ${url}`);
 
-        const response = await axios.get(url);
-        const packageInfo = response.data;
+            const response = await axios.get(url);
+            const packageInfo = response.data;
 
-        debug(`Latest version number for package ${name}: ${packageInfo.version}`);
-        return packageInfo.version;
+            const latestVersion = packageInfo['dist-tags'].latest;
+            debug(`Latest version number for package ${name}: ${latestVersion}`);
+            return latestVersion;
+
+        } else {
+            const url = `https://registry.npmjs.org/${encodeURIComponent(name)}/latest`;
+            debug(`GET: ${url}`);
+
+            const response = await axios.get(url);
+            const packageInfo = response.data;
+
+            debug(`Latest version number for package ${name}: ${packageInfo.version}`);
+            return packageInfo.version;
+        }
     }
 
     // The main render function.
