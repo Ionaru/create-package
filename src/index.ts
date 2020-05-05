@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import axios from 'axios';
 import * as childProcess from 'child_process';
-import Debug from 'debug';
 import * as fs from 'fs';
-import * as Mustache from 'mustache';
 import * as path from 'path';
+
+import Debug from 'debug';
+import * as Mustache from 'mustache';
 import * as simpleGit from 'simple-git/promise';
 
 (async () => {
@@ -32,11 +32,13 @@ import * as simpleGit from 'simple-git/promise';
     debug(`Package name: ${packageName}`);
 
     if (!packageName) {
+        // eslint-disable-next-line no-console
         console.error('A package name is required!');
         process.exit(1);
     }
 
     if (process.argv.length > 3) {
+        // eslint-disable-next-line no-console
         console.error('Only a single argument (package name) is allowed!');
         process.exit(1);
     }
@@ -44,6 +46,7 @@ import * as simpleGit from 'simple-git/promise';
     debug(`Attempting to create folder: ${packageName}`);
 
     if (fs.existsSync(packageName)) {
+        // eslint-disable-next-line no-console
         console.error('Directory already exists, cannot create package!');
         process.exit(1);
     }
@@ -60,19 +63,26 @@ import * as simpleGit from 'simple-git/promise';
     const initialCommit = await git.commit('Initial commit', [], {'--allow-empty': true});
     const shortInitialCommitHash = initialCommit.commit.split(' ')[1];
 
-    const packagesToInstall = ['@types/node', 'tslint', 'tslint-sonarts', 'typescript'];
-
-    const [latestTypesNodeVersion, latestTsLintVersion, latestTsLintSonartsVersion, latestTypescriptVersion] =
-        await Promise.all(packagesToInstall.map(getLatestPackageVersion));
+    const packagesToInstall = [
+        '@ionaru/eslint-config',
+        '@types/jest',
+        '@types/node',
+        '@typescript-eslint/eslint-plugin',
+        '@typescript-eslint/eslint-plugin-tslint',
+        'eslint',
+        'eslint-plugin-import',
+        'eslint-plugin-jest',
+        'eslint-plugin-no-null',
+        'eslint-plugin-prefer-arrow',
+        'eslint-plugin-sonarjs',
+        'jest',
+        'ts-jest',
+        'typescript',
+    ];
 
     const year = new Date().getFullYear().toString();
 
-    // noinspection JSUnusedGlobalSymbols
     const variables: ITemplateVariables = {
-        latestTsLintSonartsVersion,
-        latestTsLintVersion,
-        latestTypesNodeVersion,
-        latestTypescriptVersion,
         packageName,
         packageScope,
         shortInitialCommitHash,
@@ -81,36 +91,8 @@ import * as simpleGit from 'simple-git/promise';
 
     const templateDirectory = path.join(__dirname, '..', 'templates');
 
-    async function getLatestPackageVersion(name: string): Promise<string> {
-        debug(`Getting latest version number for package: ${name}`);
-
-        if (name === '@types/node') {
-            // special case
-
-            const url = `https://registry.npmjs.org/${encodeURIComponent(name)}`;
-            debug(`GET: ${url}`);
-
-            const response = await axios.get(url);
-            const packageInfo = response.data;
-
-            const latestVersion = packageInfo['dist-tags'].latest;
-            debug(`Latest version number for package ${name}: ${latestVersion}`);
-            return latestVersion;
-
-        } else {
-            const url = `https://registry.npmjs.org/${encodeURIComponent(name)}/latest`;
-            debug(`GET: ${url}`);
-
-            const response = await axios.get(url);
-            const packageInfo = response.data;
-
-            debug(`Latest version number for package ${name}: ${packageInfo.version}`);
-            return packageInfo.version;
-        }
-    }
-
     // The main render function.
-    function renderTemplate(templateName: string): void {
+    const renderTemplate = (templateName: string): void => {
         const template = fs.readFileSync(path.join(templateDirectory, templateName)).toString();
         debug(`${templateName}: Template contents read.`);
 
@@ -121,7 +103,7 @@ import * as simpleGit from 'simple-git/promise';
         const writePath = path.join(variables.packageName, fileName);
         debug(`${templateName}: Writing rendered template to ${writePath}.`);
         fs.writeFileSync(writePath, rendered);
-    }
+    };
 
     // Render all the templates in the template folder.
     debug(`Reading template directory: ${templateDirectory}`);
@@ -143,7 +125,7 @@ import * as simpleGit from 'simple-git/promise';
     fs.mkdirSync(path.join(packageName, 'dist'));
 
     debug(`Installing packages.`);
-    childProcess.execSync(`npm install --silent`, {cwd: packageName});
+    childProcess.execSync(`npm install --silent ${packagesToInstall.join(' ')}`, {cwd: packageName});
 
     debug(`Doing project setup commit.`);
 

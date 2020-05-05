@@ -12,9 +12,7 @@
     "scripts": {
         "clean": "npx -q rimraf dist",
         "build": "npm run clean && tsc --project tsconfig.json",
-        "lint": "npm run lint:src && npm run lint:test",
-        "lint:src": "tslint --project tsconfig.json -c tslint.json --format stylish",
-        "lint:test": "tslint -c tslint.json src/**/*.spec.ts --format stylish",
+        "lint": "eslint --ext ts --max-warnings 0 --ignore-pattern *.spec.ts src",
         "pretest": "npm run lint",
         "test": "echo \"Error: no test specified\" && exit 0",
         "prepare": "npm run build",
@@ -31,18 +29,24 @@
     "repository": "github:Ionaru/create-package",
     "license": "MIT",
     "devDependencies": {
+        "@ionaru/eslint-config": "^1.0.3",
         "@types/debug": "^4.1.5",
-        "@types/mustache": "^3.2.0",
-        "@types/node": "^13.1.6",
-        "tslint": "^5.20.1",
-        "tslint-sonarts": "^1.9.0",
-        "typescript": "^3.7.4"
+        "@types/mustache": "^4.0.1",
+        "@types/node": "^13.13.4",
+        "@typescript-eslint/eslint-plugin": "^2.31.0",
+        "@typescript-eslint/eslint-plugin-tslint": "^2.31.0",
+        "eslint": "^6.8.0",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-no-null": "^1.0.2",
+        "eslint-plugin-prefer-arrow": "^1.2.1",
+        "eslint-plugin-sonarjs": "^0.5.0",
+        "tslint": "^6.1.2",
+        "typescript": "^3.8.3"
     },
     "dependencies": {
-        "axios": "^0.19.1",
         "debug": "^4.1.1",
-        "mustache": "^3.2.1",
-        "simple-git": "^1.129.0",
+        "mustache": "^4.0.1",
+        "simple-git": "^2.4.0",
         "supports-color": "^7.1.0"
     }
 }

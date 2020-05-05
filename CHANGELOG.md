@@ -5,13 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### BREAKING CHANGES
+- Switched from TSLint to ESLint.
+- Added Jest.
+
 ### Added
 - "clean" script to package.json template.
+- Node.js 14 to .travis.yml template.
+- Support for Node.js 14
 
 ### Changed
 - tsconfig.json template to only build the index.ts file, everything else should be discovered through imports.
 - 2019 in LICENSE template to dynamic current year.
-- Node.js to 12 in CONTRIBUTING template.
+- Node.js to 14 in CONTRIBUTING template.
 
 ### Removed
 - Node.js 8 from .travis.yml template.

@@ -11,22 +11,28 @@
         "clean": "npx -q rimraf dist",
         "build": "npm run clean && tsc --project tsconfig.json",
         "lint": "npm run lint:src && npm run lint:test",
-        "lint:src": "tslint --project tsconfig.json -c tslint.json --format stylish",
-        "lint:test": "tslint -c tslint.json src/**/*.spec.ts --format stylish",
+        "lint:src": "eslint --ext ts --max-warnings 0 --ignore-pattern *.spec.ts src",
+        "lint:test": "eslint --ext ts --plugin jest --env jest/globals src/**/*.spec.ts",
         "pretest": "npm run lint",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest src",
         "prepare": "npm run build",
         "preversion": "npm run test"
+    },
+    "jest": {
+        "collectCoverage": true,
+        "collectCoverageFrom": [
+            "src/**/*.ts",
+            "!src/**/*.d.ts",
+            "!src/**/*.spec.ts",
+            "!src/__mocks__/*.ts"
+        ],
+        "preset": "ts-jest",
+        "testEnvironment": "node"
     },
     "keywords": [],
     "author": "Jeroen Akkerman",
     "repository": "github:Ionaru/{{packageName}}",
     "license": "MIT",
-    "devDependencies": {
-        "@types/node": "{{latestTypesNodeVersion}}",
-        "tslint": "{{latestTsLintVersion}}",
-        "tslint-sonarts": "{{latestTsLintSonartsVersion}}",
-        "typescript": "{{latestTypescriptVersion}}"
-    },
+    "devDependencies": {},
     "dependencies": {}
 }
