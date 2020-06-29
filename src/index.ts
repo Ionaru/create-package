@@ -125,7 +125,7 @@ import * as simpleGit from 'simple-git/promise';
     fs.mkdirSync(path.join(packageName, 'dist'));
 
     debug(`Installing packages.`);
-    childProcess.execSync(`npm install --silent ${packagesToInstall.join(' ')}`, {cwd: packageName});
+    childProcess.execSync(`npm install -D --silent ${packagesToInstall.join(' ')}`, {cwd: packageName});
 
     debug(`Doing project setup commit.`);
 
