@@ -29,24 +29,24 @@
     "repository": "github:Ionaru/create-package",
     "license": "MIT",
     "devDependencies": {
-        "@ionaru/eslint-config": "^1.0.3",
+        "@ionaru/eslint-config": "^1.0.4",
         "@types/debug": "^4.1.5",
         "@types/mustache": "^4.0.1",
-        "@types/node": "^13.13.4",
-        "@typescript-eslint/eslint-plugin": "^2.31.0",
-        "@typescript-eslint/eslint-plugin-tslint": "^2.31.0",
-        "eslint": "^6.8.0",
-        "eslint-plugin-import": "^2.20.2",
+        "@types/node": "^14.0.14",
+        "@typescript-eslint/eslint-plugin": "^3.4.0",
+        "@typescript-eslint/eslint-plugin-tslint": "^3.4.0",
+        "eslint": "^7.3.1",
+        "eslint-plugin-import": "^2.22.0",
         "eslint-plugin-no-null": "^1.0.2",
         "eslint-plugin-prefer-arrow": "^1.2.1",
         "eslint-plugin-sonarjs": "^0.5.0",
         "tslint": "^6.1.2",
-        "typescript": "^3.8.3"
+        "typescript": "^3.9.5"
     },
     "dependencies": {
         "debug": "^4.1.1",
         "mustache": "^4.0.1",
-        "simple-git": "^2.4.0",
+        "simple-git": "^2.11.0",
         "supports-color": "^7.1.0"
     }
 }
