@@ -64,17 +64,8 @@ import * as simpleGit from 'simple-git/promise';
     const shortInitialCommitHash = initialCommit.commit.split(' ')[1];
 
     const packagesToInstall = [
-        '@ionaru/eslint-config',
         '@types/jest',
         '@types/node',
-        '@typescript-eslint/eslint-plugin',
-        '@typescript-eslint/eslint-plugin-tslint',
-        'eslint',
-        'eslint-plugin-import',
-        'eslint-plugin-jest',
-        'eslint-plugin-no-null',
-        'eslint-plugin-prefer-arrow',
-        'eslint-plugin-sonarjs',
         'jest',
         'ts-jest',
         'typescript',
@@ -126,6 +117,9 @@ import * as simpleGit from 'simple-git/promise';
 
     debug(`Installing packages.`);
     childProcess.execSync(`npm install -D --silent ${packagesToInstall.join(' ')}`, {cwd: packageName});
+
+    debug(`Installing linting.`);
+    childProcess.execSync(`npx @ionaru/create-linting`, {cwd: packageName});
 
     debug(`Doing project setup commit.`);
 
