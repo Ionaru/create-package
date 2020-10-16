@@ -60,7 +60,8 @@ import * as simpleGit from 'simple-git/promise';
     await git.init();
 
     debug(`Doing initial commit.`);
-    const initialCommit = await git.commit('Initial commit', [], {'--allow-empty': 'true'});
+    // eslint-disable-next-line no-null/no-null
+    const initialCommit = await git.commit('Initial commit', [], {'--allow-empty': null});
     const shortInitialCommitHash = initialCommit.commit.split(' ')[1];
 
     const packagesToInstall = [
