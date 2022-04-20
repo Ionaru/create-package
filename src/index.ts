@@ -6,7 +6,7 @@ import * as path from 'path';
 
 import Debug from 'debug';
 import * as Mustache from 'mustache';
-import * as simpleGit from 'simple-git/promise';
+import simpleGit from 'simple-git';
 
 (async () => {
 
