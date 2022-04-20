@@ -23,7 +23,7 @@
         "npm",
         "package",
         "typescript",
-        "tslint"
+        "eslint"
     ],
     "author": "Jeroen Akkerman",
     "repository": "github:Ionaru/create-package",
