@@ -4,7 +4,14 @@ All notable changes to the create-package project will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!--## [Unreleased]-->
+<!-- ## [Unreleased] -->
+## [6.0.0] - 2022-04-20
+### BREAKING CHANGES
+- Dropped support for Node.js 10.
+
+### Added
+- Support for Node.js 16.
+
 ## [5.0.3] - 2020-10-16
 ### Fixed
 - First commit parameter
@@ -25,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - "clean" script to package.json template.
 - Node.js 14 to .travis.yml template.
-- Support for Node.js 14
+- Support for Node.js 14.
 
 ### Changed
 - tsconfig.json template to only build the index.ts file, everything else should be discovered through imports.
@@ -159,7 +166,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Script that deploys the templates into a project folder.
 - Setup for this project.
 
-[Unreleased]: https://github.com/Ionaru/create-package/compare/5.0.3...HEAD
+[Unreleased]: https://github.com/Ionaru/create-package/compare/6.0.0...HEAD
+[6.0.0]: https://github.com/Ionaru/create-package/compare/5.0.3...6.0.0
 [5.0.3]: https://github.com/Ionaru/create-package/compare/5.0.2...5.0.3
 [5.0.2]: https://github.com/Ionaru/create-package/compare/5.0.1...5.0.2
 [5.0.1]: https://github.com/Ionaru/create-package/compare/5.0.0...5.0.1
